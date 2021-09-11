@@ -1,5 +1,8 @@
 package com.zhong.simple;
 
+import java.util.Arrays;
+import java.util.HashMap;
+
 /**
  * Created by cc on 2021/9/11
  * 167. 两数之和 II - 输入有序数组
@@ -7,12 +10,21 @@ package com.zhong.simple;
  */
 public class L_167 {
     public static void main(String[] args) {
-
+        int[] arr = new int[]{2,3,4};
+        int target = 6;
+        int[] twoSum = new L_167().twoSum(arr, target);
+        System.out.println(Arrays.toString(twoSum));
     }
 
     public int[] twoSum(int[] numbers, int target) {
-
-        return null;
+        HashMap<Integer, Integer> hashMap = new HashMap<>(numbers.length);
+        for (int i = 0; i < numbers.length; i++) {
+            if (hashMap.containsKey(target - numbers[i])){
+                return new int[]{hashMap.get(target - numbers[i])+1, i+1};
+            }
+            hashMap.put(numbers[i],i);
+        }
+        return new int[]{};
     }
 }
 /**
