@@ -7,10 +7,59 @@ package com.zhong.simple;
  */
 public class L_283 {
     public static void main(String[] args) {
-
+        int[] arr = new int[]{4,2,4,0,0,3,0,5,1,0};
+        new L_283().moveZeroes(arr);
     }
 
-    public void moveZeroes(int[] nums) {
+    /**
+     * 前后指针，暴力法
+     */
+//    public void moveZeroes(int[] nums) {
+//        int len = nums.length;
+//        if (len <= 1) return;
+//        int left = 0, right = 1;
+//        while (right <= len - 1 && left <= len - 1){
+//            if (nums[left] == 0){
+//                if ( nums[right] != 0){
+//                    int temp = nums[right];
+//                    nums[right] = nums[left];
+//                    nums[left] = temp;
+//                } else {
+//                    right ++;
+//                }
+//            } else {
+//                left ++;
+//            }
+//            if (left > right){
+//                right = left + 1;
+//            }
+//        }
+//
+//        for (int i : nums){
+//            System.out.print(i + "\t");
+//        }
+//    }
+
+    /**
+     * 分类抓元素
+     */
+    public void moveZeroes(int[] nums){
+        if (nums == null || nums.length <= 1){
+            return;
+        }
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0 ){
+                nums[index++] = nums[i];
+            }
+        }
+        for (int i = index; i < nums.length ; i++) {
+            nums[i] = 0;
+        }
+
+        for (int l : nums){
+            System.out.print(l + "\t");
+        }
 
     }
 
